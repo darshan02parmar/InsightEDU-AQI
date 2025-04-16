@@ -32,6 +32,13 @@ def clean_data(education_df, pollution_df):
 def education_dashboard(education_df):
     st.title("Education Analysis Dashboard")
     
+    # Add overview section
+    st.markdown("### 🔍 Overview")
+    st.info("""
+        This dashboard presents a comprehensive analysis of literacy rates across different states and districts in India. 
+        Use the filters in the sidebar to explore specific states and their educational metrics.
+    """)
+    
     # Sidebar filters
     st.sidebar.header("Education Filters")
     selected_state = st.sidebar.selectbox(
@@ -43,16 +50,22 @@ def education_dashboard(education_df):
     if selected_state != 'All':
         education_df = education_df[education_df['State'] == selected_state]
     
+    # Metrics with explanations
+    st.markdown("### 📈 Key Metrics")
+    st.markdown("These metrics provide a quick summary of the selected region's educational status.")
+    
     # Create two columns for metrics
     col1, col2 = st.columns(2)
     
     with col1:
         avg_literacy = education_df['Literacy'].mean()
         st.metric("Average Literacy Rate", f"{avg_literacy:.1f}%")
+        st.caption("The mean literacy rate across all selected districts")
     
     with col2:
         total_districts = len(education_df)
         st.metric("Number of Districts", total_districts)
+        st.caption("Total number of districts in the selected region")
     
     # Top 10 districts by literacy rate
     st.subheader("Top 10 Districts by Literacy Rate")
@@ -87,6 +100,14 @@ def education_dashboard(education_df):
 def pollution_dashboard(pollution_df):
     st.title("Air Quality Analysis Dashboard")
     
+    # Add overview section
+    st.markdown("### 🔍 Overview")
+    st.info("""
+        This dashboard monitors air quality trends across various cities. The Air Quality Index (AQI) 
+        and other pollutant measurements help assess environmental health risks.
+        Use the sidebar filters to analyze specific cities and time periods.
+    """)
+    
     # Sidebar filters
     st.sidebar.header("Air Quality Filters")
     selected_city = st.sidebar.selectbox(
@@ -113,20 +134,32 @@ def pollution_dashboard(pollution_df):
             (pollution_df['Date'] <= pd.to_datetime(date_range[1]))
         ]
     
+    # Metrics with explanations
+    st.markdown("### 📈 Key Air Quality Indicators")
+    st.markdown("These metrics provide crucial information about air quality levels in the selected region.")
+    
     # Create three columns for metrics
     col1, col2, col3 = st.columns(3)
     
     with col1:
         avg_aqi = pollution_df['AQI'].mean()
         st.metric("Average AQI", f"{avg_aqi:.1f}")
+        st.caption("""
+            0-50: Good
+            51-100: Moderate
+            101-150: Unhealthy for Sensitive Groups
+            151+: Unhealthy
+        """)
     
     with col2:
         max_pm25 = pollution_df['PM2.5'].max()
         st.metric("Maximum PM2.5", f"{max_pm25:.1f} µg/m³")
+        st.caption("Fine particulate matter, dangerous when > 35.5 µg/m³")
     
     with col3:
         max_pm10 = pollution_df['PM10'].max()
         st.metric("Maximum PM10", f"{max_pm10:.1f} µg/m³")
+        st.caption("Coarse particulate matter, concerning when > 150 µg/m³")
     
     # AQI trend over time
     st.subheader("AQI Trend Over Time")
