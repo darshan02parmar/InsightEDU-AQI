@@ -41,10 +41,7 @@ The aim of this project is to:
 ## 🛠 Run Locally
 
 ```bash
-git clone https://github.com/darshan02parmar/insightedu-aqi.git
-
-cd insightedu-aqi
-
-pip install -r requirements.txt
-
-streamlit run app.py
+git clone https://github.com/darshan02parmar/insightedu-aqi.git '''
+''' cd insightedu-aqi '''
+''' pip install -r requirements.txt '''
+''' streamlit run app.py '''
