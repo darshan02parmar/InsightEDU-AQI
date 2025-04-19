@@ -23,12 +23,21 @@ The aim of this project is to:
 
 ## 📌 Features
 
-- 📈 Trend analysis using line charts, bar graphs, and heatmaps
-- 🗂 Data filtering based on region or pollution level
-- 📊 Comparative visualization of education vs AQI
-- 🧹 Cleaned and structured data using `pandas`, `numpy`
-- 🎨 Interactive charts using `matplotlib`, `seaborn`, and `altair`
-- 🌐 Deployed with Streamlit
+
+### 📘 Education Analysis Dashboard
+- View state-wise and district-wise **literacy rates**
+- Key stats: average literacy rate, district count, min/max literacy
+- Visuals: top 10 districts, distribution histogram, state-wise bar comparison
+- 🚨 **Low-literacy alert zone** for districts under 60%
+- 🧩 **State & District Comparison Tool** — compare literacy rates interactively
+
+### 🌫️ Air Quality Insights Dashboard
+- Analyze **AQI trends** across cities and dates
+- Key metrics: average AQI, PM2.5, PM10, max AQI
+- 📅 Monthly and yearly AQI trend charts
+- 🔥 Pollutant correlation heatmap
+- 🚨 **High-pollution alert zone** for AQI > 200
+- 🧩 **City Comparison Tool** — side-by-side AQI and pollutant insights
 
 ## ⚙️ Technologies Used
 
